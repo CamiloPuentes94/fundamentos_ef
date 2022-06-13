@@ -5,14 +5,14 @@ namespace projectef.models;
 
 public class Tarea
 {
-    [Key] // Attributos
+    //[Key] // Attributos
     public Guid TareaId {get;set;}
 
-    [ForeignKey("CategoriaId")] // atributo llave foranea
+    //[ForeignKey("CategoriaId")] // atributo llave foranea
     public Guid CategoriaId {get;set;}
 
-    [Required]
-    [MaxLength(200)]
+    //[Required]
+    //[MaxLength(200)]
     public string Titulo {get;set;}
 
     public string Descripcion {get;set;}
@@ -23,7 +23,7 @@ public class Tarea
 
     public virtual Categoria Categoria {get;set;}
 
-    [NotMapped] // con este atributo no carga el mapeo para la base de datos
+    //[NotMapped] // con este atributo no carga el mapeo para la base de datos
     public string Resumen {get;set;}
 }
 
