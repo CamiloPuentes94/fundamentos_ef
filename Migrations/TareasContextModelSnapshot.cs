@@ -37,6 +37,9 @@ namespace porject.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
+                    b.Property<int>("Peso")
+                        .HasColumnType("int");
+
                     b.HasKey("CategoriaId");
 
                     b.ToTable("Categoria", (string)null);
