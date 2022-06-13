@@ -30,10 +30,10 @@ public class TareasContext: DbContext
             categoria.ToTable("Categoria");
             categoria.HasKey(p => p.CategoriaId);
             categoria.Property(p => p.Nombre).IsRequired().HasMaxLength(150);
-            categoria.Property(p => p.Descripcion);
+            categoria.Property(p => p.Descripcion).IsRequired(false);
             categoria.Property(p => p.Peso);
 
-            categoria.HasData(categoriasInit)
+            categoria.HasData(categoriasInit);
         });
 
         List<Tarea> tareasInit = new List<Tarea>();
@@ -58,7 +58,7 @@ public class TareasContext: DbContext
             tarea.HasKey(p => p.TareaId);
             tarea.HasOne(p => p.Categoria).WithMany(p => p.Tareas).HasForeignKey(p => p.CategoriaId); //de este modo podemos configurar las llaves foraneas
             tarea.Property(p => p.Titulo).IsRequired().HasMaxLength(200);
-            tarea.Property(p => p.Descripcion);
+            tarea.Property(p => p.Descripcion).IsRequired(false);
             tarea.Property(p => p.PrioridadTarea);
             tarea.Property(p => p.FechaCreacion);
             tarea.Ignore(p => p.Resumen);
