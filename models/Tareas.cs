@@ -8,7 +8,7 @@ public class Tarea
 
     public string Descripcion {get;set;}
 
-    public Prioridad PrioridadTarea {get;set}
+    public Prioridad PrioridadTarea {get;set;}
     public DateTime FechaCreacion {get;set;}
     public virtual Categoria Categoria {get;set;}
     public virtual ICollection<Tarea> Tareas {get;set;}
