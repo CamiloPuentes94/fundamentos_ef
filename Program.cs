@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 //builder.Services.AddDbContext<TareasContext>(p => p.UseInMemoryDatabase("TareasDB")); // base de datos en memoria
 
-builder.Services.AddSqlServer<TareasContext>("Data Source=DESKTOP-L67MPRC\\SQLEXPRESS; Initial Catalog= TareasDb; user id=sa; password=Samimajo10"); // conexion a el servidor
+builder.Services.AddSqlServer<TareasContext>(builder.Configuration.GetConnectionString("cnTareas")); // conexion a el servidor
 
 var app = builder.Build();
 
