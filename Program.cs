@@ -53,7 +53,7 @@ app.MapPost("/api/tareas2", async ([FromServices] TareasContext dbContext, [From
     return Results.Ok();
 });
 
-// actualizar datos
+// actualizar datos en la tabala tareas
 
 
 app.MapPut("/api/tareas2/{id}", async ([FromServices] TareasContext dbContext, [FromBody] Tarea tarea, [FromRoute] Guid id) =>
@@ -75,6 +75,8 @@ app.MapPut("/api/tareas2/{id}", async ([FromServices] TareasContext dbContext, [
     return Results.NotFound();
 });
 
+// actualizar datos en la tabala categorias
+
 app.MapPut("/api/categoria/{id}", async ([FromServices] TareasContext dbContext, [FromBody] Categoria categoria, [FromRoute] Guid id) =>
 {
     var categoriaActual = dbContext.Categorias.Find(id);
@@ -85,6 +87,25 @@ app.MapPut("/api/categoria/{id}", async ([FromServices] TareasContext dbContext,
         categoriaActual.Descripcion = categoria.Descripcion;
         categoriaActual.Peso = categoria.Peso;
         
+
+        await dbContext.SaveChangesAsync();
+
+        return Results.Ok();
+    }
+
+    return Results.NotFound();
+});
+
+
+// Eliminar datos de tabla tareas
+
+app.MapDelete("/api/tareas2/{id}", async ([FromServices] TareasContext dbContext, [FromRoute] Guid id) =>
+{
+    var tareaActual = dbContext.Tareas.Find(id);
+
+    if(tareaActual != null)
+    {
+        dbContext.Remove(tareaActual);
 
         await dbContext.SaveChangesAsync();
 
