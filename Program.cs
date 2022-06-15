@@ -22,4 +22,9 @@ app.MapGet("/api/tareas", async ([FromServices] TareasContext dbContext)=>
 {
     return Results.Ok(dbContext.Tareas.Include(p => p.Categoria).Where(p => p.PrioridadTarea == projectef.models.Prioridad.Baja));
 });
+
+app.MapGet("/api/tareas2", async ([FromServices] TareasContext dbContext)=>
+{
+    return Results.Ok(dbContext.Tareas.Include(p => p.Categoria).Where(p => p.PrioridadTarea == projectef.models.Prioridad.Media));
+});
 app.Run();
