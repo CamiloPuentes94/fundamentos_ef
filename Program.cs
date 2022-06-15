@@ -20,6 +20,6 @@ app.MapGet("/dbconexion",async([FromServices] TareasContext dbContext) =>
 
 app.MapGet("/api/tareas", async ([FromServices] TareasContext dbContext)=>
 {
-    return Results.Ok(dbContext.Tareas)
+    return Results.Ok(dbContext.Tareas.Where(p => p.PrioridadTarea == projectef.models.Prioridad.Baja));
 });
 app.Run();
